@@ -8,7 +8,10 @@ header {
 }
 
 .frontpage {
-    padding: 50px;
+    padding: 100px;
+    padding-top: 150px;
+    padding-bottom: 200px;
+    gap: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center; /* Center items vertically */
@@ -23,7 +26,7 @@ header {
 .frontpage img {
     max-width: 100%; /* Ensure the image is responsive */
     height: auto; /* Maintain aspect ratio */
-    max-height: 200px; /* Limit height of the image if needed */
+    max-height: 250px; /* Limit height of the image if needed */
 }
 
 
