@@ -7,19 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="user.css" rel="stylesheet" type="text/css" />
     <style>
-
-        #add-expense, #expense-history {
+        #add-expense, #expense-history, #receipt-history{
             display: none;
         }
     </style>
 </head>
+<header>
+    <br>
+    <div class="topbtn">
+      <button type="button column1"><a href="index.html" style="color:#3c4043;">Log Out</a></button>
+    </div>
+    <br>
+</header>
+
 <body>
     <!-- sidebar -->
     <div class="sidebar">
+        <div class="logoname column1">
+            <img class="logo" src="assets/receipt.png" alt="Expense Snap Logo">
+            <h3>Expense Snap</h3>
+        </div>
         <h2>EasiPeasi</h2>
         <button onclick="toggleSection('add-expense')">Add Expense</button>
         <button onclick="toggleSection('expense-history')">Expense History</button>
-        <button onclick="logout()">Log Out</button>
+        <button onclick="toggleSection('receipt-history')">Receipt History</button>
     </div>
 
     <!-- main content area -->
@@ -33,7 +44,7 @@
         <!-- add expense section -->
         <section id="add-expense">
             <h2>Add a New Expense</h2>
-            <form action="/add_expense" method="POST">
+            <form id="expense-form">
                 <label for="expense-date">Date:</label>
                 <input type="date" id="expense-date" name="expense-date" required>
 
@@ -54,9 +65,15 @@
 
                 <button type="submit">Add Expense</button>
             </form>
+            <h2>Add a New Receipt</h2>
+            <form id="receipt-form">
+                <label for="receipt-upload">Upload Receipt:</label>
+                <input type="file" id="receipt-upload" name="receipt-upload" accept="image/*" required>
+                <button type="submit">UploadReceipt</button>
+            </form>
         </section>
 
-        <!-- expense History Section -->
+        <!-- expense history section -->
         <section id="expense-history">
             <h2>Your Expense History</h2>
             <table>
@@ -68,22 +85,15 @@
                         <th>Note</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>2024-10-26</td>
-                        <td>$0.00</td>
-                        <td>Food</td>
-                        <td>Technica lunch!</td>
-                    </tr>
-                    <tr>
-                        <td>2024-10-26</td>
-                        <td>$0.00</td>
-                        <td>Transportation</td>
-                        <td>Walking to Technica lol</td>
-                    </tr>
-                    <!-- more expenses but idk how to add it, is this backend -->
+                <tbody id="expense-table-body">
+                    <!-- here expenses will be dynamically inserted -->
                 </tbody>
             </table>
+        </section>
+
+        <section id="receipt-history">
+            <h2>Your Receipt History</h2>
+
         </section>
 
         <footer>
@@ -97,12 +107,87 @@
             document.getElementById('expense-history').style.display = 'none';
     
             document.getElementById(sectionId).style.display = 'block';
+
+            if (sectionId === 'expense-history') {
+                loadExpenses();
+            }
         }
-    
+
         function logout() {
             alert("Logging out...");
+        }
+
+        // handle adding receipt
+        document.getElementById('expense-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const date = document.getElementById('expense-date').value;
+            const amount = document.getElementById('expense-amount').value;
+            const category = document.getElementById('expense-category').value;
+            const note = document.getElementById('expense-note').value;
+
+            const expense = {
+                date: date,
+                amount: amount,
+                category: category,
+                note: note
+            };
+
+            saveExpense(expense);
+
+            addExpenseToTable(expense);
+
+            document.getElementById('expense-form').reset();
+        });
+
+        // handle uploading receipt
+        document.getElementById('receipt-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const fileInput = document.getElementById('receipt-upload');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const receiptData = event.target.result;
+                    alert('Receitp uploaded successfully!');
+                    fileInput.value = '';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert('Please select a receipt to upload.');
+            }
+        });
+
+        function saveExpense(expense) {
+            let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+            expenses.push(expense);
+            localStorage.setItem('expenses', JSON.stringify(expenses));
+        }
+
+        function loadExpenses() {
+            const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+            document.getElementById('expense-table-body').innerHTML = ''; // Clear existing entries
+
+            expenses.forEach(expense => {
+                addExpenseToTable(expense);
+            });
+        }
+
+        function addExpenseToTable(expense) {
+            const tableBody = document.getElementById('expense-table-body');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${expense.date}</td>
+                <td>$${parseFloat(expense.amount).toFixed(2)}</td>
+                <td>${expense.category}</td>
+                <td>${expense.note}</td>
+            `;
+            tableBody.appendChild(row);
         }
     </script>
     
 </body>
 </html>
+
