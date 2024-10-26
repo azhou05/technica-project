@@ -1,44 +1,175 @@
+* {
+    box-sizing: border-box;
+}
+
 header {
     text-align: left;
     text-justify: auto;
 }
+
+.frontpage {
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Center items vertically */
+}
+
+.frontpage h3 {
+    flex: 1; /* Allow text to take up space */
+    margin-right: 20px; /* Add space between text and image */
+    text-align: left; /* Align text to the left */
+}
+
+.frontpage img {
+    max-width: 100%; /* Ensure the image is responsive */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 200px; /* Limit height of the image if needed */
+}
+
+
+.topbtn {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    gap: 1rem;
+}
+
+.column1 {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    text-align: left;
+}
+
+header:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 .logo {
     height: 40px;
     float: left;
     padding-left: 10px;
     padding-right: 10px;
-
 }
+
+/* Flexbox Container for Feature Cards */
+.feature-list {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    justify-content: space-between; /* Distribute cards across the row */
+    padding: 25px;
+    gap: .5rem; /* Adds space between cards */
+}
+
+/* Feature Cards */
+.feature-card {
+    border-radius: 2%;
+    background-color: #e5efe9;
+    padding: 40px 28px;
+    flex-grow: 1; /* Allows cards to stretch equally */
+    flex-basis: 0; /* Distributes cards evenly regardless of content size */
+    min-width: 200px; /* Prevents cards from getting too small */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.featureicon {
+    max-height: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feature-list {
+        flex-wrap: wrap; /* Stack cards vertically on smaller screens */
+    }
+    
+    .feature-card {
+        flex: 1 1 100%; /* Make each card take full width */
+    }
+}
+
+
 button {
-    float: right;
+  float: right;
+  align-items: center;
+  appearance: none;
+  background-color: #e5efe9;
+  border-radius: 15px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+  box-sizing: border-box;
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: .25px;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  padding: 2px 20px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform,opacity;
+  z-index: 0;
+}
+
+button:hover {
+  background: #fbfffd;
+  color: #174ea6;
+}
+
+button:active {
+  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+  border: 2px solid #4285f4;
+}
+
+button:not(:disabled) {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+button:not(:disabled):hover {
+  box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+}
+
+button:not(:disabled):focus {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+button:not(:disabled):active {
+  box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+}
+
+button:disabled {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
 body {
     background-color: #D8E2DC;
     text-align: center;
+    min-height: 100vh; /* Ensures body takes full height */
+    margin: 0; /* Reset default margin */
 }
 
 footer {
-    font-size: 12px;
-}
-
-/* columns */
-* {
-    box-sizing: border-box;
-}
-.column {
-    float: left;
-    width: 33.33%;
-    padding: 10px;
-    text-align: left;
-}
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-@media screen and (max-width: 600px) {
-    .column {
-        width: 100%;
-    }
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
 }
