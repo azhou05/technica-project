@@ -55,8 +55,13 @@ header:after {
     clear: both;
 }
 
+.logoname {
+    display: flex; /* Enable Flexbox */
+    align-items: center; /* Center items vertically */
+}
+
 .logo {
-    height: 40px;
+    height: 40px; /* Adjust logo height as needed */
     float: left;
     padding-left: 10px;
     padding-right: 10px;
