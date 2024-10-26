@@ -7,10 +7,31 @@ header {
     text-justify: auto;
 }
 
+.frontpage {
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Center items vertically */
+}
+
+.frontpage h3 {
+    flex: 1; /* Allow text to take up space */
+    margin-right: 20px; /* Add space between text and image */
+    text-align: left; /* Align text to the left */
+}
+
+.frontpage img {
+    max-width: 100%; /* Ensure the image is responsive */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 200px; /* Limit height of the image if needed */
+}
+
+
 .topbtn {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
+    gap: 1rem;
 }
 
 .column1 {
@@ -38,8 +59,8 @@ header:after {
     display: flex;
     flex-wrap: wrap; /* Allow wrapping */
     justify-content: space-between; /* Distribute cards across the row */
-    padding: 20px;
-    gap: 1rem; /* Adds space between cards */
+    padding: 25px;
+    gap: .5rem; /* Adds space between cards */
 }
 
 /* Feature Cards */
@@ -52,6 +73,10 @@ header:after {
     min-width: 200px; /* Prevents cards from getting too small */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: left;
+}
+
+.featureicon {
+    max-height: 40px;
 }
 
 /* Responsive Design */
