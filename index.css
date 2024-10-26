@@ -1,8 +1,44 @@
+header {
+    text-align: left;
+    text-justify: auto;
+}
+.logo {
+    height: 40px;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+button {
+    float: right;
+}
+
 body {
-    background-color: #F2F0CC;
+    background-color: #D8E2DC;
     text-align: center;
 }
 
 footer {
     font-size: 12px;
+}
+
+/* columns */
+* {
+    box-sizing: border-box;
+}
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    text-align: left;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
 }
