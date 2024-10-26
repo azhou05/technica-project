@@ -36,7 +36,7 @@ header:after {
 /* Flexbox Container for Feature Cards */
 .feature-list {
     display: flex;
-    flex-wrap: nowrap; /* Prevent wrapping for maximum stretch */
+    flex-wrap: wrap; /* Allow wrapping */
     justify-content: space-between; /* Distribute cards across the row */
     padding: 20px;
     gap: 1rem; /* Adds space between cards */
@@ -44,7 +44,7 @@ header:after {
 
 /* Feature Cards */
 .feature-card {
-    border-radius: 8px;
+    border-radius: 2%;
     background-color: #e5efe9;
     padding: 40px 28px;
     flex-grow: 1; /* Allows cards to stretch equally */
@@ -79,7 +79,6 @@ button {
   cursor: pointer;
   display: inline-flex;
   fill: currentcolor;
-  font-family: "Google Sans",Roboto,Arial,sans-serif;
   font-size: 14px;
   font-weight: 500;
   height: 48px;
@@ -139,6 +138,8 @@ button:disabled {
 body {
     background-color: #D8E2DC;
     text-align: center;
+    min-height: 100vh; /* Ensures body takes full height */
+    margin: 0; /* Reset default margin */
 }
 
 footer {
