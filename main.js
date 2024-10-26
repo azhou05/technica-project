@@ -1,1 +1,1 @@
-# write main javascript here
+// write main javascript here
