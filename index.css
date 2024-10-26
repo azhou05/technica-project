@@ -45,13 +45,13 @@ header:after {
 /* Feature Cards */
 .feature-card {
     border-radius: 8px;
-    background-color: #f5f5f5;
+    background-color: #e5efe9;
     padding: 40px 28px;
     flex-grow: 1; /* Allows cards to stretch equally */
     flex-basis: 0; /* Distributes cards evenly regardless of content size */
     min-width: 200px; /* Prevents cards from getting too small */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    text-align: left;
 }
 
 /* Responsive Design */
@@ -70,7 +70,7 @@ button {
   float: right;
   align-items: center;
   appearance: none;
-  background-color: #f0fefe;
+  background-color: #e5efe9;
   border-radius: 15px;
   border-style: none;
   box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
@@ -146,10 +146,4 @@ footer {
     text-align: center;
     font-size: 0.9em;
     color: #777;
-}
-
-@media screen and (max-width: 600px) {
-    .column2 {
-        width: 100%;
-    }
 }

@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "gh-pages": "^6.2.0"
+    "gh-pages": "^6.2.0",
+    "lucide-react": "^0.453.0"
   }
 }
