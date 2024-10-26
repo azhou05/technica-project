@@ -1,2 +1,2 @@
 # technica-project
-working name easi peasi...something?
+Easi Peasi Expense Snap
