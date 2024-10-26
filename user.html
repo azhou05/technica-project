@@ -1,1 +1,108 @@
-<!-- page for user info -->
+<!DOCTYPE html>
+<html class="html">
+<head>
+    <title>EasiPeasi Expense Tracker</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="user.css" rel="stylesheet" type="text/css" />
+    <style>
+
+        #add-expense, #expense-history {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- sidebar -->
+    <div class="sidebar">
+        <h2>EasiPeasi</h2>
+        <button onclick="toggleSection('add-expense')">Add Expense</button>
+        <button onclick="toggleSection('expense-history')">Expense History</button>
+        <button onclick="logout()">Log Out</button>
+    </div>
+
+    <!-- main content area -->
+    <div class="main-content">
+        <!-- header for logged in page -->
+        <header>
+            <h1>Welcome, User!</h1>
+            <p>Head to the sidebar to get started.</p>
+        </header>
+
+        <!-- add expense section -->
+        <section id="add-expense">
+            <h2>Add a New Expense</h2>
+            <form action="/add_expense" method="POST">
+                <label for="expense-date">Date:</label>
+                <input type="date" id="expense-date" name="expense-date" required>
+
+                <label for="expense-amount">Amount:</label>
+                <input type="number" id="expense-amount" name="expense-amount" required>
+
+                <label for="expense-category">Category:</label>
+                <select id="expense-category" name="expense-category">
+                    <option value="food">Food</option>
+                    <option value="transportation">Transportation</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="utilities">Utilities</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="expense-note">Note:</label>
+                <textarea id="expense-note" name="expense-note" placeholder="Add a note..."></textarea>
+
+                <button type="submit">Add Expense</button>
+            </form>
+        </section>
+
+        <!-- expense History Section -->
+        <section id="expense-history">
+            <h2>Your Expense History</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2024-10-26</td>
+                        <td>$0.00</td>
+                        <td>Food</td>
+                        <td>Technica lunch!</td>
+                    </tr>
+                    <tr>
+                        <td>2024-10-26</td>
+                        <td>$0.00</td>
+                        <td>Transportation</td>
+                        <td>Walking to Technica lol</td>
+                    </tr>
+                    <!-- more expenses but idk how to add it, is this backend -->
+                </tbody>
+            </table>
+        </section>
+
+        <footer>
+            <p>Designed and Created by Emily, Annie, Seungha, and Ivy.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleSection(sectionId) {
+            document.getElementById('add-expense').style.display = 'none';
+            document.getElementById('expense-history').style.display = 'none';
+    
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    
+        function logout() {
+            alert("Logging out...");
+        }
+    </script>
+    
+</body>
+</html>
