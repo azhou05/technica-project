@@ -1,0 +1,3 @@
+exclude:
+  - node_modules
+  - index-app/node_modules
