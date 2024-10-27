@@ -188,26 +188,6 @@
             document.getElementById('expense-form').reset();
         });
 
-        // handle uploading receipt
-        document.getElementById('receipt-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const fileInput = document.getElementById('receipt-upload');
-            const file = fileInput.files[0];
-
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    const receiptData = event.target.result;
-                    alert('Receipt uploaded successfully!');
-                    fileInput.value = '';
-                };
-                reader.readAsDataURL(file);
-            } else {
-                alert('Please select a receipt to upload.');
-            }
-        });
-
         function saveExpense(expense) {
             let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
             expenses.push(expense);
@@ -351,7 +331,6 @@
                     const receiptData = event.target.result;
                     saveReceipt(receiptData);
                     loadReceipts(); // Reload all receipts
-                    alert('Receipt uploaded successfully!');
                     fileInput.value = ''; // Clear the input after uploading
                     document.getElementById('file-chosen').textContent = 'No file chosen';
                 };
