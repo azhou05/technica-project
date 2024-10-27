@@ -2,3 +2,6 @@
 	path = index-app/node_modules/.cache/gh-pages
 	url = git@github.com:azhou05/technica-project.git
 
+[submodule "index-app/node_modules/.cache/gh-pages/opencv"]
+    path = index-app/node_modules/.cache/gh-pages/opencv
+    url = <url-for-opencv-submodule>
