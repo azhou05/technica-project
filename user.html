@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="user.css" rel="stylesheet" type="text/css" />
     <style>
-        #add-expense, #expense-history, #receipt-history{
+        #add-expense, #expense-history, #receipt-history {
             display: none;
         }
     </style>
@@ -16,31 +16,33 @@
 <body>
     <header>
         <br>
+        <button class="openbtn" onclick="openNav(); toggleSidebar()">&#9776;</button>
         <div class="topbtn">
-          <topbtn type="button column1" ><a href="index.html" style="color:#3c4043;">Log Out</a></topbtn>
+          <topbtn type="button column1" ><a href="index.html" style="color:#000000;">Log Out</a></topbtn>
         </div>
         <br>
     </header>
     <!-- sidebar -->
-    <div class="sidebar">
+    <div class="sidebar" id="mySidebar">
+        <button class="closebtn" onclick="closeNav()">&#10006</button>
         <div class="logoname column1">
             <img class="logo" src="assets/receipt.png" alt="Expense Snap Logo">
             <h3>Expense Snap</h3>
         </div>
         <h2>EasiPeasi</h2>
-        <button onclick="toggleSection('add-expense')">Add Expense</button>
-        <button onclick="toggleSection('expense-history')">Expense History</button>
-        <button onclick="toggleSection('receipt-history')">Receipt History</button>
+        <button onclick="toggleSection('main'); closeNav()">Analytics</button>
+        <button onclick="toggleSection('add-expense'); closeNav()">Add Expense</button>
+        <button onclick="toggleSection('expense-history'); closeNav()">Expense History</button>
+        <button onclick="toggleSection('receipt-history'); closeNav()">Receipt History</button>
+    </div>
+
+    <div id="main">
+        <h2>Analytics Overview</h2>
+        <p>Here is a summary of your spending through the past week, month, and year.</p>
     </div>
 
     <!-- main content area -->
     <div class="main-content">
-        <!-- header for logged in page -->
-        <header>
-            <h1>Welcome, User!</h1>
-            <p>Head to the sidebar to get started.</p>
-        </header>
-
         <!-- add expense section -->
         <section id="add-expense">
             <h2>Add a New Expense</h2>
@@ -63,7 +65,7 @@
                 <label for="expense-note">Note:</label>
                 <textarea id="expense-note" name="expense-note" placeholder="Add a note..."></textarea>
 
-                <button type="submit" >Submit</button>
+                <button type="submit">Submit</button>
             </form>
             <h2>Add a New Receipt</h2>
             <form id="receipt-form">
@@ -71,7 +73,7 @@
                 <input type="file" id="receipt-upload" name="receipt-upload" accept="image/*" required style="display: none;">
                 <button type="button" id="custom-file-upload">Choose File</button>
                 <span id="file-chosen">No file chosen</span>
-                <button type="submit" >Submit</button>
+                <button type="submit">Submit</button>
             </form>
         </section>
 
@@ -96,7 +98,7 @@
 
         <section id="receipt-history">
             <h2>Your Receipt History</h2>
-
+            <!-- Content for receipt history can go here -->
         </section>
 
         <footer>
@@ -105,16 +107,45 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            showDashboard();
+        });
+
+        function toggleSidebar() {
+            document.body.classList.toggle('sidebar-open');
+        }
+
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.querySelector("footer").style.marginLeft = "250px"; // Adjust footer with sidebar
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.querySelector("footer").style.marginLeft = "0"; // Reset footer margin
+        }
+
+
         function toggleSection(sectionId) {
+            document.getElementById('main').style.display = 'none';
             document.getElementById('add-expense').style.display = 'none';
             document.getElementById('expense-history').style.display = 'none';
             document.getElementById('receipt-history').style.display = 'none';
-    
+
             document.getElementById(sectionId).style.display = 'block';
 
             if (sectionId === 'expense-history') {
                 loadExpenses();
             }
+        }
+
+        function showDashboard() {
+            document.getElementById('main').style.display = 'block';
+            document.getElementById('add-expense').style.display = 'none';
+            document.getElementById('expense-history').style.display = 'none';
+            document.getElementById('receipt-history').style.display = 'none';
         }
 
         function logout() {
@@ -155,7 +186,7 @@
                 const reader = new FileReader();
                 reader.onload = function(event) {
                     const receiptData = event.target.result;
-                    alert('Receitp uploaded successfully!');
+                    alert('Receipt uploaded successfully!');
                     fileInput.value = '';
                 };
                 reader.readAsDataURL(file);
