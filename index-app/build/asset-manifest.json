@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/technica-project/static/css/main.ce76ff79.css",
+    "main.js": "/technica-project/static/js/main.d8dcbc09.js",
+    "static/media/cats.png": "/technica-project/static/media/cats.b8b1df6a455eaf0d1889.png",
+    "index.html": "/technica-project/index.html",
+    "main.ce76ff79.css.map": "/technica-project/static/css/main.ce76ff79.css.map",
+    "main.d8dcbc09.js.map": "/technica-project/static/js/main.d8dcbc09.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ce76ff79.css",
+    "static/js/main.d8dcbc09.js"
+  ]
+}
