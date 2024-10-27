@@ -13,20 +13,20 @@ header {
     padding-bottom: 200px;
     gap: 2rem;
     display: flex;
-    justify-content: center; /* Center all children */
-    align-items: center; /* Center items vertically */
+    justify-content: center; 
+    align-items: center;
 }
 
 .frontpage h3 {
-    flex: 1; /* Allow text to take up space */
-    margin-right: 20px; /* Add space between text and image */
-    text-align: left; /* Align text to the left */
+    flex: 1; 
+    margin-right: 20px; 
+    text-align: left; 
 }
 
 .frontpage img {
-    max-width: 100%; /* Ensure the image is responsive */
-    height: auto; /* Maintain aspect ratio */
-    max-height: 250px; /* Limit height of the image if needed */
+    max-width: 100%;
+    height: auto;
+    max-height: 250px;
 }
 
 
@@ -39,9 +39,9 @@ header {
 }
 
 .botbtn {
-    display: flex; /* Use flexbox */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically if needed */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
 }
 
 .column1 {
@@ -58,35 +58,34 @@ header:after {
 }
 
 .logoname {
-    display: flex; /* Enable Flexbox */
-    align-items: center; /* Center items vertically */
+    display: flex; 
+    align-items: center; 
 }
 
 .logo {
-    height: 40px; /* Adjust logo height as needed */
+    height: 40px;
     float: left;
     padding-left: 10px;
     padding-right: 10px;
 }
 
-/* Flexbox Container for Feature Cards */
 .feature-list {
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping */
-    justify-content: space-between; /* Distribute cards across the row */
+    flex-wrap: wrap; 
+    justify-content: space-between;
     padding: 25px;
-    gap: .5rem; /* Adds space between cards */
+    gap: .5rem;
     padding-bottom: 50px;
 }
 
 /* Feature Cards */
 .feature-card {
     border-radius: 2%;
-    background-color: #e8dad1;
+    background-color: #ffd8bf;
     padding: 40px 28px;
-    flex-grow: 1; /* Allows cards to stretch equally */
-    flex-basis: 0; /* Distributes cards evenly regardless of content size */
-    min-width: 200px; /* Prevents cards from getting too small */
+    flex-grow: 1;
+    flex-basis: 0; 
+    min-width: 200px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: left;
 }
@@ -95,14 +94,14 @@ header:after {
     max-height: 40px;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .feature-list {
-        flex-wrap: wrap; /* Stack cards vertically on smaller screens */
+        flex-wrap: wrap; 
     }
     
     .feature-card {
-        flex: 1 1 100%; /* Make each card take full width */
+        flex: 1 1 100%; 
     }
 }
 
@@ -111,7 +110,7 @@ button {
   float: right;
   align-items: center;
   appearance: none;
-  background-color: #e8dad1;
+  background-color: #febf98;
   border-radius: 15px;
   border-style: none;
   box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
@@ -142,7 +141,7 @@ button {
 }
 
 button:hover {
-  background: #ebe4df;
+  background: #f3c5a8;
   color: #174ea6;
 }
 
@@ -179,8 +178,8 @@ button:disabled {
 body {
     background-color: #f8f3e8;
     text-align: center;
-    min-height: 100vh; /* Ensures body takes full height */
-    margin: 0; /* Reset default margin */
+    min-height: 100vh;
+    margin: 0;
 }
 
 footer {
