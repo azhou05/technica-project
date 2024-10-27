@@ -247,10 +247,96 @@
         }
 
         function deleteExpense(index) {
-            let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
-            expenses.splice(index, 1); // Remove the expense from the array
-            localStorage.setItem('expenses', JSON.stringify(expenses)); // Update local storage
-            loadExpenses(); // Re-load expenses to update the UI
+            if (confirm('Are you sure you want to delete this expense?')) {
+                let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+                expenses.splice(index, 1); // Remove the expense from the array
+                localStorage.setItem('expenses', JSON.stringify(expenses)); // Update local storage
+                loadExpenses(); // Re-load expenses to update the UI
+            }
+        }
+
+        function saveReceipt(receiptData) {
+            let receipts = JSON.parse(localStorage.getItem('receipts')) || [];
+            receipts.push({
+                data: receiptData,
+                date: new Date().toISOString().split('T')[0],
+                id: Date.now()  // unique identifier for each receipt
+            });
+            localStorage.setItem('receipts', JSON.stringify(receipts));
+        }
+
+        function loadReceipts() {
+            const receipts = JSON.parse(localStorage.getItem('receipts')) || [];
+            const receiptContainer = document.getElementById('receipt-table-body');
+            receiptContainer.innerHTML = ''; // Clear existing entries
+            
+            // Create grid container
+            const gridContainer = document.createElement('div');
+            gridContainer.className = 'receipt-grid';
+            receiptContainer.appendChild(gridContainer);
+
+            receipts.forEach(receipt => {
+                displayReceipt(receipt, gridContainer);
+            });
+        }
+
+        function displayReceipt(receipt, container) {
+            const receiptDiv = document.createElement('div');
+            receiptDiv.className = 'receipt-item';
+            receiptDiv.innerHTML = `
+                <img src="${receipt.data}" alt="Receipt" class="receipt-image">
+                <div class="receipt-date">${receipt.date}</div>
+                <button class="delete-receipt-btn" data-id="${receipt.id}">&times;</button>
+            `;
+
+            // Add click handler for image to show modal
+            receiptDiv.querySelector('.receipt-image').addEventListener('click', () => {
+                showReceiptModal(receipt.data);
+            });
+
+            // Add click handler for delete button
+            receiptDiv.querySelector('.delete-receipt-btn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                deleteReceipt(receipt.id);
+            });
+
+            container.appendChild(receiptDiv);
+        }
+
+        function deleteReceipt(receiptId) {
+            if (confirm('Are you sure you want to delete this receipt?')) {
+                let receipts = JSON.parse(localStorage.getItem('receipts')) || [];
+                receipts = receipts.filter(receipt => receipt.id !== receiptId);
+                localStorage.setItem('receipts', JSON.stringify(receipts));
+                loadReceipts();
+            }
+        }
+
+        function showReceiptModal(receiptData) {
+            // Create modal if it doesn't exist
+            let modal = document.querySelector('.receipt-modal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.className = 'receipt-modal';
+                modal.innerHTML = `
+                    <span class="close-modal">&times;</span>
+                    <div class="modal-content">
+                        <img src="" alt="Receipt">
+                    </div>
+                `;
+                document.body.appendChild(modal);
+
+                // Add click handler to close modal
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal || e.target.className === 'close-modal') {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+
+            // Update modal image and display it
+            modal.querySelector('img').src = receiptData;
+            modal.style.display = 'flex';
         }
 
         document.getElementById('receipt-form').addEventListener('submit', function(e) {
@@ -264,38 +350,16 @@
                 reader.onload = function(event) {
                     const receiptData = event.target.result;
                     saveReceipt(receiptData);
-                    displayReceipt(receiptData);
+                    loadReceipts(); // Reload all receipts
                     alert('Receipt uploaded successfully!');
                     fileInput.value = ''; // Clear the input after uploading
+                    document.getElementById('file-chosen').textContent = 'No file chosen';
                 };
                 reader.readAsDataURL(file);
             } else {
                 alert('Please select a receipt to upload.');
             }
         });
-
-        function saveReceipt(receiptData) {
-            let receipts = JSON.parse(localStorage.getItem('receipts')) || [];
-            receipts.push(receiptData);
-            localStorage.setItem('receipts', JSON.stringify(receipts));
-        }
-
-        function loadReceipts() {
-            const receipts = JSON.parse(localStorage.getItem('receipts')) || [];
-            document.getElementById('receipt-table-body').innerHTML = ''; // Clear existing entries
-
-            receipts.forEach(receipt => {
-                displayReceipt(receipt);
-            });
-        }
-
-        function displayReceipt(receiptData) {
-            const receiptContainer = document.getElementById('receipt-table-body');
-            const receiptDiv = document.createElement('div');
-            receiptDiv.className = 'receipt-item';
-            receiptDiv.innerHTML = `<img src="${receiptData}" alt="Receipt" class="receipt-image" />`;
-            receiptContainer.appendChild(receiptDiv);
-        }
 
     </script>
     
