@@ -51,7 +51,7 @@
                 <input type="date" id="expense-date" name="expense-date" required>
 
                 <label for="expense-amount">Amount:</label>
-                <input type="number" id="expense-amount" name="expense-amount" required>
+                <input type="number" id="expense-amount" name="expense-amount" step="0.01" min="0" placeholder="0.00" required>
 
                 <label for="expense-category">Category:</label>
                 <select id="expense-category" name="expense-category">
@@ -62,15 +62,15 @@
                     <option value="other">Other</option>
                 </select>
 
-                <button type="submit"><p>Submit</p></button>
+                <button type="submit" class="submit-button"><p>Submit</p></button>
             </form>
             <h2>Add a New Receipt</h2>
             <form id="receipt-form">
                 <label for="receipt-upload">Upload Receipt:</label>
                 <input type="file" id="receipt-upload" name="receipt-upload" accept="image/*" required style="display: none;">
-                <button type="button" id="custom-file-upload"><p>Choose File</p></button>
+                <button type="button" id="custom-file-upload" class="submit-button"><p>Choose File</p></button>
                 <span id="file-chosen">No file chosen</span>
-                <button type="submit"><p>Submit</p></button>
+                <button type="submit" class="submit-button"><p>Submit</p></button>
             </form>
         </section>
 
@@ -240,7 +240,7 @@
             receipts.push({
                 data: receiptData,
                 date: new Date().toISOString().split('T')[0],
-                id: Date.now()  // unique identifier for each receipt
+                id: Date.now() 
             });
             localStorage.setItem('receipts', JSON.stringify(receipts));
         }

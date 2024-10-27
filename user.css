@@ -377,3 +377,19 @@ footer {
     font-size: 30px;
     cursor: pointer;
 }
+
+.submit-button {
+    background-color: #ffe7e7;
+    color: #f9ccd5;
+    border: 2px solid #f9ccd5;
+    padding: 1px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 600;
+}
+
+.submit-button:hover {
+    color: white;
+    background-color: #f9ccd5;
+    
+}
