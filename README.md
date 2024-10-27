@@ -1,2 +1,1 @@
-# technica-project
-Easi Peasi Expense Snap
+## Easi Peasi Expense Snap
