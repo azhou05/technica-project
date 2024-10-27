@@ -17,7 +17,6 @@ function App() {
       </div>
 
     <body>
-      <a href="user.html">user</a>
       <h1>EasiPeasi Expense Snap</h1>
       <div className="frontpage">
         <div> 
@@ -47,7 +46,9 @@ function App() {
               </p>
           </div>
       </div>
-      <h4>Take control of your financial future with EasiPeasi Expense Snap! Start tracking your spending today to make smarter financial decisions tomorrow.
+      <h4 class="caption">Take control of your financial future with EasiPeasi Expense Snap! 
+        <br/>
+        Start tracking your spending today to make smarter financial decisions tomorrow.
       </h4>
       <div className="botbtn">
         <button className="botbtn">Sign Up</button>

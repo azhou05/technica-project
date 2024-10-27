@@ -1,3 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bayon&family=Bona+Nova&family=Darker+Grotesque:wght@400;700&family=Fredoka:wght@300..700&display=swap');
+
+h1 {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 600;
+}
+
+h2 {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 600;
+}
+
+h3 {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 500;
+}
+
+h4 {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 600;
+}
+
+.caption {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 500;
+}
+
+h5 {
+    font-family: "Fredoka", sans-serif;
+}
+
+p {
+    font-family: "Fredoka", sans-serif;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -20,7 +55,7 @@ header {
 .frontpage h3 {
     flex: 1; 
     margin-right: 20px; 
-    text-align: left; 
+    text-align: center;
 }
 
 .frontpage img {
@@ -116,6 +151,8 @@ header:after {
     min-width: 200px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: left;
+    position: relative;
+    z-index: 1;
 }
 
 .featureicon {
