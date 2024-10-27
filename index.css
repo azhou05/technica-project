@@ -24,9 +24,24 @@ header {
 }
 
 .frontpage img {
-    max-width: 100%;
+    max-width: 250px;
     height: auto;
-    max-height: 250px;
+    max-height: 100%;
+}
+
+@media (max-width: 768px) {
+    .frontpage {
+        flex-direction: column; /* Stack content vertically */
+        text-align: center; /* Center-align content */
+    }
+
+    .frontpage img {
+        max-height: none; /* Allow image to resize freely */
+    }
+
+    .frontpage div {
+        margin-bottom: 1rem; /* Add space between text and image */
+    }
 }
 
 .login {
@@ -62,6 +77,12 @@ header:after {
     content: "";
     display: table;
     clear: both;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .logoname {
