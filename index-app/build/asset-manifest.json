@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/technica-project/static/css/main.a3878808.css",
-    "main.js": "/technica-project/static/js/main.025182cd.js",
-    "static/media/cats.png": "/technica-project/static/media/cats.b8b1df6a455eaf0d1889.png",
-    "static/media/research.png": "/technica-project/static/media/research.63eb8f05e7ef0ace0b5f.png",
-    "static/media/budget.png": "/technica-project/static/media/budget.8dba79c3945b3f03a7c6.png",
-    "static/media/stock-market.png": "/technica-project/static/media/stock-market.2a8db51c98178e35f3e8.png",
-    "static/media/tag.png": "/technica-project/static/media/tag.893e36f1ef8708fefd0f.png",
-    "index.html": "/technica-project/index.html",
-    "main.a3878808.css.map": "/technica-project/static/css/main.a3878808.css.map",
-    "main.025182cd.js.map": "/technica-project/static/js/main.025182cd.js.map"
+    "main.css": "/technica-project/home/static/css/main.8ad4db64.css",
+    "main.js": "/technica-project/home/static/js/main.117205a9.js",
+    "static/media/cats.png": "/technica-project/home/static/media/cats.b8b1df6a455eaf0d1889.png",
+    "static/media/research.png": "/technica-project/home/static/media/research.63eb8f05e7ef0ace0b5f.png",
+    "static/media/budget.png": "/technica-project/home/static/media/budget.8dba79c3945b3f03a7c6.png",
+    "static/media/stock-market.png": "/technica-project/home/static/media/stock-market.2a8db51c98178e35f3e8.png",
+    "static/media/tag.png": "/technica-project/home/static/media/tag.893e36f1ef8708fefd0f.png",
+    "index.html": "/technica-project/home/index.html",
+    "main.8ad4db64.css.map": "/technica-project/home/static/css/main.8ad4db64.css.map",
+    "main.117205a9.js.map": "/technica-project/home/static/js/main.117205a9.js.map"
   },
   "entrypoints": [
-    "static/css/main.a3878808.css",
-    "static/js/main.025182cd.js"
+    "static/css/main.8ad4db64.css",
+    "static/js/main.117205a9.js"
   ]
 }

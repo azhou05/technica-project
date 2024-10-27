@@ -7,8 +7,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="technica-project/home" element={<Home />} />
-        <Route path="technica-project/user" element={<UserPage />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/user" element={<UserPage />} />
       </Routes>
     </BrowserRouter>
   );
