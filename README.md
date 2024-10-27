@@ -1,4 +1,3 @@
-# technica-project
 ## Easi Peasi Expense Snap
 
 Welcome to EasiPeasi Expense Snap! This project is a powerful financial tool that helps you budget and track your expenses effortlessly. With intelligent receipt scanning, expense tracking, and insightful trend analysis, managing your finances has never been easier.
@@ -43,11 +42,11 @@ This will launch the app in your browser at http://localhost:3000
 
 ## Usage
 
-Upload Receipts:
+1. Upload Receipts:
 Click on the "Upload" button and select an image of a receipt. The system will extract item details, prices, and dates automatically.
-Track Expenses:
+2. Track Expenses:
 View your spending in weekly or monthly views. Totals will be calculated automatically to help you stay on top of your finances.
-Categorize Transactions:
+3. Categorize Transactions:
 Group your expenses into custom categories such as groceries, dining, and more for better tracking.
-View Charts and Trends:
+4. View Charts and Trends:
 Use the charts and graphs section to analyze your spending trends visually and make informed financial decisions
