@@ -62,9 +62,6 @@
                     <option value="other">Other</option>
                 </select>
 
-                <label for="expense-note">Note:</label>
-                <textarea id="expense-note" name="expense-note" placeholder="Add a note..."></textarea>
-
                 <button type="submit">Submit</button>
             </form>
             <h2>Add a New Receipt</h2>
@@ -100,11 +97,11 @@
             <h2>Your Receipt History</h2>
             <!-- Content for receipt history can go here -->
         </section>
-
-        <footer>
-            <p>Designed and Created by Emily, Annie, Seungha, and Ivy.</p>
-        </footer>
     </div>
+
+    <footer>
+        <p>Designed and Created by Emily, Annie, Seungha, and Ivy.</p>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -118,12 +115,18 @@
         function openNav() {
             document.getElementById("mySidebar").style.width = "250px";
             document.getElementById("main").style.marginLeft = "250px";
+            document.querySelectorAll("section").forEach(section => {
+                section.style.marginLeft = "250px";
+            });
             document.querySelector("footer").style.marginLeft = "250px"; // Adjust footer with sidebar
         }
 
         function closeNav() {
             document.getElementById("mySidebar").style.width = "0";
             document.getElementById("main").style.marginLeft = "0";
+            document.querySelectorAll("section").forEach(section => {
+                section.style.marginLeft = "0";
+            });
             document.querySelector("footer").style.marginLeft = "0"; // Reset footer margin
         }
 
