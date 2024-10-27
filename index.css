@@ -8,9 +8,12 @@ header {
 }
 
 .frontpage {
-    padding: 50px;
+    padding: 100px;
+    padding-top: 100px;
+    padding-bottom: 200px;
+    gap: 2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center all children */
     align-items: center; /* Center items vertically */
 }
 
@@ -23,7 +26,7 @@ header {
 .frontpage img {
     max-width: 100%; /* Ensure the image is responsive */
     height: auto; /* Maintain aspect ratio */
-    max-height: 200px; /* Limit height of the image if needed */
+    max-height: 250px; /* Limit height of the image if needed */
 }
 
 
@@ -36,7 +39,9 @@ header {
 }
 
 .botbtn {
-    margin-right: 20px;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically if needed */
 }
 
 .column1 {
@@ -52,8 +57,13 @@ header:after {
     clear: both;
 }
 
+.logoname {
+    display: flex; /* Enable Flexbox */
+    align-items: center; /* Center items vertically */
+}
+
 .logo {
-    height: 40px;
+    height: 40px; /* Adjust logo height as needed */
     float: left;
     padding-left: 10px;
     padding-right: 10px;
@@ -66,12 +76,13 @@ header:after {
     justify-content: space-between; /* Distribute cards across the row */
     padding: 25px;
     gap: .5rem; /* Adds space between cards */
+    padding-bottom: 50px;
 }
 
 /* Feature Cards */
 .feature-card {
     border-radius: 2%;
-    background-color: #e5efe9;
+    background-color: #e8dad1;
     padding: 40px 28px;
     flex-grow: 1; /* Allows cards to stretch equally */
     flex-basis: 0; /* Distributes cards evenly regardless of content size */
@@ -100,7 +111,7 @@ button {
   float: right;
   align-items: center;
   appearance: none;
-  background-color: #e5efe9;
+  background-color: #e8dad1;
   border-radius: 15px;
   border-style: none;
   box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
@@ -131,7 +142,7 @@ button {
 }
 
 button:hover {
-  background: #fbfffd;
+  background: #ebe4df;
   color: #174ea6;
 }
 
@@ -166,7 +177,7 @@ button:disabled {
 }
 
 body {
-    background-color: #D8E2DC;
+    background-color: #f8f3e8;
     text-align: center;
     min-height: 100vh; /* Ensures body takes full height */
     margin: 0; /* Reset default margin */
