@@ -228,17 +228,6 @@ footer {
     margin-left: 0;
 }
 
-.custom-file-upload {
-    background-color: #e5efe9;
-    color: #3c4043;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 10px 0;
-    font-family: inherit;
-}
-
 .file-chosen {
     font-family: inherit;
     color: #333;
@@ -327,7 +316,7 @@ footer {
     position: absolute;
     top: 5px;
     right: 5px;
-    background: #ff4444;
+    background: #f9ccd5;
     color: white;
     border: none;
     border-radius: 50%;
@@ -378,18 +367,16 @@ footer {
     cursor: pointer;
 }
 
-.submit-button {
-    background-color: #ffe7e7;
-    color: #f9ccd5;
-    border: 2px solid #f9ccd5;
-    padding: 1px 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 600;
+.delete-button {
+    font-family: "Fredoka", sans-serif;
+    font-size: 1em; /* Adjust size as needed */
+    padding: 5px 10px; /* Add padding for better appearance */
+    cursor: pointer; /* Pointer cursor on hover */
 }
 
-.submit-button:hover {
-    color: white;
-    background-color: #f9ccd5;
-    
+.rand-button {
+    font-family: "Fredoka", sans-serif;
+    font-size: 1em;
+    padding: 5px 10px;
+    cursor: pointer;
 }

@@ -62,15 +62,15 @@
                     <option value="other">Other</option>
                 </select>
 
-                <button type="submit" class="submit-button"><p>Submit</p></button>
+                <button class="rand-button" type="submit" class="submit-button"><p>Submit</p></button>
             </form>
             <h2>Add a New Receipt</h2>
             <form id="receipt-form">
                 <label for="receipt-upload">Upload Receipt:</label>
                 <input type="file" id="receipt-upload" name="receipt-upload" accept="image/*" required style="display: none;">
-                <button type="button" id="custom-file-upload" class="submit-button"><p>Choose File</p></button>
+                <button class="rand-button" type="button" id="custom-file-upload"><p>Choose File</p></button>
                 <span id="file-chosen">No file chosen</span>
-                <button type="submit" class="submit-button"><p>Submit</p></button>
+                <button class="rand-button" type="submit" class="submit-button"><p>Submit</p></button>
             </form>
         </section>
 
@@ -217,11 +217,11 @@
                 <td>${expense.date}</td>
                 <td>$${parseFloat(expense.amount).toFixed(2)}</td>
                 <td>${expense.category}</td>
-                <td><button class="delete-expense-btn" data-index="${index}">Delete</button></td>
+                <td><button class="delete-button" data-index="${index}">Delete</button></td>
             `;
             tableBody.appendChild(row);
 
-            row.querySelector('.delete-expense-btn').addEventListener('click', function() {
+            row.querySelector().addEventListener('click', function() {
                 deleteExpense(index);
             });
         }
