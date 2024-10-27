@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bayon&family=Bona+Nova&family=Darker+Grotesque:wght@400;700&family=Fredoka:wght@300..700&display=swap');
 
-/* text styles */
 h1 {
     font-family: "Fredoka", sans-serif;
     font-weight: 600;
@@ -65,6 +64,7 @@ body {
 }
 
 .topbtn {
+    font-family: "Fredoka", sans-serif;
     float: right;
     align-items: center;
     appearance: none;
@@ -96,6 +96,7 @@ body {
     width: auto;
     will-change: transform,opacity;
     z-index: 0;
+    margin-top: 30px;
     margin-right: 20px;
 }
 
@@ -109,35 +110,18 @@ body {
     flex-grow: 1;
 }
 
-/*.sidebar {
-    width: 0;
+.sidebar {
+    font-family: "Fredoka", sans-serif;
     height: 100%;
+    width: 0;
     position: fixed;
     z-index: 1;
-    left: 0;
     top: 0;
-    overflow-x: hidden;
+    left: 0;
     background-color: #f8f3e8;
-    color: #333;
+    overflow-x: hidden;
     padding-top: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-    border-right: 2px solid #f8f3e8;
-    transition: 0.5;
-}*/
-
-.sidebar {
-    height: 100%; /* Full-height */
-    width: 0; /* Initially hidden */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0;
-    left: 0;
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* Transition effect for the sidebar */
+    transition: 0.5s;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -149,54 +133,21 @@ body {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181; /* Text color */
+    color: #818181;
     display: block;
     transition: 0.3s;
 }
 
 .sidebar a:hover {
-    color: #f1f1f1; /* Hover color */
-}
-
-.openbtn {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: transparent; /* No background */
-    border: none; /* No border */
-    color: #000000; /* Button color */
-    padding: 10px; /* Padding for aesthetics */
-    position: absolute; /* Positioning */
-    top: 10px; /* Position from the top */
-    left: 10px; /* Position from the left */
-    font-family: inherit;
-}
-
-.openbtn:hover {
-    color: #f3c5a8; /* Hover color */
-}
-
-.closebtn {
-    width: 78%;
-    padding: 8px 10px; 
-    margin: 8px 0;
-    font-size: 1em;
-    font-family: inherit;
-    font-weight: 400;
-    color: #665a53;
-    background-color: #f8ddcd;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s, color 0.3s;
+    color: #f1f1f1;
 }
 
 #main {
-    transition: margin-left .5s; /* Smooth transition for main content */
+    transition: margin-left .5s;
     margin-left: 0;
-    padding: 20px; /* Padding for main content */
+    padding: 20px;
 }
   
-  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
     .sidebar {padding-top: 15px;}
     .sidebar a {font-size: 18px;}
@@ -209,6 +160,7 @@ body {
 }
 
 .sidebar button {
+    font-family: "Fredoka", sans-serif;
     width: 78%;
     padding: 8px 10px; 
     margin: 8px 0;
@@ -247,6 +199,7 @@ section {
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    font-family: "Fredoka", sans-serif;
 }
 
 h1, h2 {
@@ -299,9 +252,43 @@ footer {
 }  
 
 .open {
-    width: 220px; /* Adjust width when open */
+    width: 220px;
 }
 
 .close {
-    width: 0; /* Collapse to 0 */
+    width: 0;
+}
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #000000;
+    padding: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-family: inherit;
+    transition: color 0.3s;
+}
+
+.closebtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #000000;
+    padding: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-family: inherit;
+    transition: color 0.3s;
+    display: none;
+    z-index: 2;
+}
+
+.openbtn:hover, .closebtn:hover {
+    color: #f3c5a8;
 }

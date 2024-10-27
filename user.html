@@ -16,7 +16,8 @@
 <body>
     <header>
         <br>
-        <button class="openbtn" onclick="openNav(); toggleSidebar()">&#9776;</button>
+        <button class="openbtn" onclick="openNav()">&#9776</button>
+        <button class="closebtn" onclick="closeNav()">&#10006</button>
         <div class="topbtn">
           <topbtn type="button column1" ><a href="index.html" style="color:#000000;">Log Out</a></topbtn>
         </div>
@@ -24,7 +25,6 @@
     </header>
     <!-- sidebar -->
     <div class="sidebar" id="mySidebar">
-        <button class="closebtn" onclick="closeNav()">&#10006</button>
         <div class="logoname column1">
             <img class="logo" src="assets/receipt.png" alt="Expense Snap Logo">
             <h3>Expense Snap</h3>
@@ -62,15 +62,15 @@
                     <option value="other">Other</option>
                 </select>
 
-                <button type="submit">Submit</button>
+                <button type="submit"><p>Submit</p></button>
             </form>
             <h2>Add a New Receipt</h2>
             <form id="receipt-form">
                 <label for="receipt-upload">Upload Receipt:</label>
                 <input type="file" id="receipt-upload" name="receipt-upload" accept="image/*" required style="display: none;">
-                <button type="button" id="custom-file-upload">Choose File</button>
+                <button type="button" id="custom-file-upload" "><p>Choose File</p></button>
                 <span id="file-chosen">No file chosen</span>
-                <button type="submit">Submit</button>
+                <button type="submit"><p>Submit</p></button>
             </form>
         </section>
 
@@ -83,7 +83,6 @@
                         <th>Date</th>
                         <th>Amount</th>
                         <th>Category</th>
-                        <th>Note</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -95,8 +94,11 @@
 
         <section id="receipt-history">
             <h2>Your Receipt History</h2>
-            <!-- Content for receipt history can go here -->
+            <div id="receipt-table-body">
+                <!-- Uploaded receipts will be displayed here -->
+            </div>
         </section>
+        
     </div>
 
     <footer>
@@ -108,28 +110,23 @@
             showDashboard();
         });
 
-        function toggleSidebar() {
-            document.body.classList.toggle('sidebar-open');
-        }
-
         function openNav() {
             document.getElementById("mySidebar").style.width = "250px";
             document.getElementById("main").style.marginLeft = "250px";
-            document.querySelectorAll("section").forEach(section => {
-                section.style.marginLeft = "250px";
-            });
-            document.querySelector("footer").style.marginLeft = "250px"; // Adjust footer with sidebar
+            document.querySelector(".main-content").style.marginLeft = "250px";
+            document.querySelector("footer").style.marginLeft = "250px";
+            document.querySelector(".openbtn").style.display = "none";
+            document.querySelector(".closebtn").style.display = "block";
         }
 
         function closeNav() {
             document.getElementById("mySidebar").style.width = "0";
             document.getElementById("main").style.marginLeft = "0";
-            document.querySelectorAll("section").forEach(section => {
-                section.style.marginLeft = "0";
-            });
-            document.querySelector("footer").style.marginLeft = "0"; // Reset footer margin
+            document.querySelector(".main-content").style.marginLeft = "0";
+            document.querySelector("footer").style.marginLeft = "0";
+            document.querySelector(".openbtn").style.display = "block";
+            document.querySelector(".closebtn").style.display = "none"; 
         }
-
 
         function toggleSection(sectionId) {
             document.getElementById('main').style.display = 'none';
@@ -141,6 +138,8 @@
 
             if (sectionId === 'expense-history') {
                 loadExpenses();
+            } else if (sectionId === 'receipt-history') {
+                loadReceipts();
             }
         }
 
@@ -162,13 +161,11 @@
             const date = document.getElementById('expense-date').value;
             const amount = document.getElementById('expense-amount').value;
             const category = document.getElementById('expense-category').value;
-            const note = document.getElementById('expense-note').value;
 
             const expense = {
                 date: date,
                 amount: amount,
                 category: category,
-                note: note
             };
 
             saveExpense(expense);
@@ -221,7 +218,6 @@
                 <td>${expense.date}</td>
                 <td>$${parseFloat(expense.amount).toFixed(2)}</td>
                 <td>${expense.category}</td>
-                <td>${expense.note}</td>
                 <td><button class="delete-expense-btn" data-index="${index}">Delete</button></td>
             `;
             tableBody.appendChild(row);
@@ -238,6 +234,49 @@
             loadExpenses(); // Re-load expenses to update the UI
         }
 
+        document.getElementById('receipt-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const fileInput = document.getElementById('receipt-upload');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const receiptData = event.target.result;
+                    saveReceipt(receiptData);
+                    displayReceipt(receiptData);
+                    alert('Receipt uploaded successfully!');
+                    fileInput.value = ''; // Clear the input after uploading
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert('Please select a receipt to upload.');
+            }
+        });
+
+        function saveReceipt(receiptData) {
+            let receipts = JSON.parse(localStorage.getItem('receipts')) || [];
+            receipts.push(receiptData);
+            localStorage.setItem('receipts', JSON.stringify(receipts));
+        }
+
+        function loadReceipts() {
+            const receipts = JSON.parse(localStorage.getItem('receipts')) || [];
+            document.getElementById('receipt-table-body').innerHTML = ''; // Clear existing entries
+
+            receipts.forEach(receipt => {
+                displayReceipt(receipt);
+            });
+        }
+
+        function displayReceipt(receiptData) {
+            const receiptContainer = document.getElementById('receipt-table-body');
+            const receiptDiv = document.createElement('div');
+            receiptDiv.className = 'receipt-item';
+            receiptDiv.innerHTML = `<img src="${receiptData}" alt="Receipt" class="receipt-image" />`;
+            receiptContainer.appendChild(receiptDiv);
+        }
 
     </script>
     
