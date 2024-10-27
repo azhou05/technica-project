@@ -1,0 +1,3 @@
+[submodule "index-app/node_modules/.cache/gh-pages/opencv"]
+    path = index-app/node_modules/.cache/gh-pages/opencv
+    url = <url-for-opencv-submodule>
