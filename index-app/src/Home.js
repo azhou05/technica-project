@@ -1,5 +1,12 @@
 import React from 'react';
 import './index.css';
+import logo from './assets/cats.png';
+import track from './assets/research.png';
+import UI from './assets/interface.png';
+import trend from './assets/stock-market.png'
+import graph from './assets/budget.png'
+import tag from './assets/tag.png'
+import scanner from './assets/scanner.png'
 
 const Home = () => {
   return (
@@ -8,7 +15,7 @@ const Home = () => {
         <br/>
         <div className="topbar">
           <div className="logoname column1">
-            <img className="logo" src="assets/receipt.png" alt="Expense Snap Logo"/>
+            <img className="logo" src={logo} alt="Expense Snap Logo"/>
             <h3>Expense Snap</h3>
           </div>
           <div className="topbtn">
@@ -30,43 +37,43 @@ const Home = () => {
           Simply upload an image of your receipts and our intelligent scanning technology will extract key information helping you uncover insightful trends in your spending habits. 
           </h3>
         </div>
-        <img src="assets/receipt.png" alt="Demo"/>
+        <img src={logo} alt="Demo"/>
       </div>
       
       <h1>Key Features</h1>
       <div className="feature-list">
           <div className="feature-card">
-              <img className="featureicon" src="assets/scanner.png" alt="Tracking Icon"/> 
+              <img className="featureicon" src={scanner} alt="Scan Icon"/> 
               <h4>Receipt Scanning</h4>
               <p>Users can upload images of their receipts which utilizes intelligent scanning technology to extract key information automatically, such as item details, prices, and dates.
               </p>
           </div>
           <div className="feature-card">
-              <img className="featureicon" src="assets/research.png" alt="Tracking Icon"/> 
+              <img className="featureicon" src={track} alt="Research Icon"/> 
               <h4>Expense Tracking</h4>
               <p>Users can monitor their expenses over weekly and monthly views, with the app calculating total expenses and balances for each period to provide a clear understanding of their financial status and spending patterns.
               </p>
           </div>
           <div className="feature-card">
-              <img className="featureicon" src="assets/tag.png" alt="Tracking Icon"/> 
+              <img className="featureicon" src={tag} alt="Tag Icon"/> 
               <h4>Categorize Expenses</h4>
               <p>Users can categorize expenses into customizable groups (e.g., dining, groceries, transportation, entertainment), making it easier to analyze where their money is going.
               </p>
           </div>
           <div className="feature-card">
-              <img className="featureicon" src="assets/budget.png" alt="Tracking Icon"/> 
+              <img className="featureicon" src={graph} alt="Graph Icon"/> 
               <h4>Charts and Graphs</h4>
               <p>Visual representations of spending data through charts and graphs help users quickly identify trends and patterns in their spending habits.
               </p>
           </div>
           <div className="feature-card">
-              <img className="featureicon" src="assets/stock-market.png" alt="Tracking Icon"/> 
+              <img className="featureicon" src={trend} alt="Trends Icon"/> 
               <h4>Insightful Trend Analysis</h4>
               <p>The app highlights important trends based on the scanned receipt data, enabling users to make informed decisions about their finances.
               </p>
           </div>
           <div className="feature-card">
-              <img className="featureicon" src="assets/interface.png" alt="Tracking Icon"/> 
+              <img className="featureicon" src={UI} alt="Interface Icon"/> 
               <h4>User Friendly Interface</h4>
               <p>An intuitive and easy-to-navigate interface ensures that users can quickly access features and information, making financial management simple and efficient.
               </p>
@@ -83,7 +90,7 @@ const Home = () => {
     </body>
 
     <footer>
-      <img className="banner" src="assets/cats.png" alt="4 cats"/>
+      <img className="banner" src={logo} alt="4 cats"/>
       <p> Designed, Created, and Implemented by Emily, Annie, Seungha, and Ivy.
       </p>
     </footer>
