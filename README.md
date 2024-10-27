@@ -17,7 +17,7 @@ EasiPeasi Expense Snap allows users to upload images of receipts, which are auto
 * Charts and Graphs
   * Get visual insights into your spending habits through interactive charts and graphs.
 * Insightful Trend Analysis
- * Identify important trends in your expenses and gain valuable insights for smarter financial planning.
+  * Identify important trends in your expenses and gain valuable insights for smarter financial planning.
 * User-Friendly Interface
   * Navigate the app easily with a clean and intuitive UI, making financial management simple and efficient
 
