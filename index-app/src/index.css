@@ -158,8 +158,6 @@ button {
   touch-action: manipulation;
   width: auto;
   will-change: transform,opacity;
-  z-index: 0;
-  margin-right: 20px;
 }
 button:hover {
   background: #f3c5a8;
