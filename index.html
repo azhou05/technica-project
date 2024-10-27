@@ -1,67 +1,87 @@
 <!DOCTYPE html>
 <html class="html">
   <head>
-    <title> Easi Peasi index Page</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="index.css" rel="stylesheet" type="text/css" />
-  </head>
-  <header> 
-    <br>
-    <div class="topbar">
-      <div class="logoname column1">
-        <img class="logo" src="assets/receipt.png" alt="Expense Snap Logo">
-        <h3>Expense Snap</h3>
+    <div> 
+      <br/>
+      <div className="topbar">
+        <div className="logoname column1">
+          <img className="logo" src={logo} alt="Expense Snap Logo"/>
+          <h3>Expense Snap</h3>
+        </div>
+        <div className="topbtn">
+          <button type="button" className="login button-home">Log In</button>
+          <button type="button" className="button-home">Sign Up</button>
+        </div>
       </div>
-      <div class="topbtn">
-        <button type="button" class="login">Log In</button>
-        <button type="button">Sign Up</button>
-      </div>
+      <br/>
     </div>
-    <br>
-  </header>
+
   <body>
-    <a href="user.html">user</a>
     <h1>EasiPeasi Expense Snap</h1>
-    <div class="frontpage">
+    <div className="frontpage">
       <div> 
         <h2>The ultimate financial tool for budgeting and tracking your monthly expenses. 
         </h2>
-        <h3>With EasiPeasi Expense Snap, managing your finances has never been easier! Simply upload an image of your receipts, and our intelligent scanning technology will extract key information, helping you uncover insightful trends in your spending habits.
+        <h3>With EasiPeasi Expense Snap, managing your finances has never been easier! 
+        <br/>
+        Simply upload an image of your receipts and our intelligent scanning technology will extract key information helping you uncover insightful trends in your spending habits. 
         </h3>
       </div>
-      <img src="assets/receipt.png">
+      <img src={logo} alt="Demo"/>
     </div>
     
-    <div class="feature-list">
-        <div class="feature-card">
-            <img class="featureicon" src="assets/notes.png" alt="Tracking Icon"> 
-            <h4>Step 1: Track</h4>
-            <p>Effortlessly keep tabs on your monthly expenses by letting us automatically extract details from your receipts. Visualize your spending trends over time.</p>
+    <h1>Key Features</h1>
+    <div className="feature-list">
+        <div className="feature-card">
+            <img className="featureicon" src={scanner} alt="Scan Icon"/> 
+            <h4>Receipt Scanning</h4>
+            <p>Users can upload images of their receipts which utilizes intelligent scanning technology to extract key information automatically, such as item details, prices, and dates.
+            </p>
         </div>
-        <div class="feature-card">
-            <img class="featureicon" src="assets/tag.png" alt="Tracking Icon"> 
-            <h4>Step 2: Organize</h4>
-            <p>Tag your expenses into customizable groups such as dining, groceries, transportation, and entertainment, making it easier to see where your money goes.</p>
+        <div className="feature-card">
+            <img className="featureicon" src={track} alt="Research Icon"/> 
+            <h4>Expense Tracking</h4>
+            <p>Users can monitor their expenses over weekly and monthly views, with the app calculating total expenses and balances for each period to provide a clear understanding of their financial status and spending patterns.
+            </p>
         </div>
-        <div class="feature-card">
-            <img class="featureicon" src="assets/budget.png" alt="Tracking Icon"> 
-            <h4>Step 3: Budget</h4>
-            <p>Gain insights into your spending patterns and see exactly where your money goes. Stay on top of your finances and make informed spending decisions.
+        <div className="feature-card">
+            <img className="featureicon" src={tag} alt="Tag Icon"/> 
+            <h4>Categorize Expenses</h4>
+            <p>Users can categorize expenses into customizable groups (e.g., dining, groceries, transportation, entertainment), making it easier to analyze where their money is going.
+            </p>
+        </div>
+        <div className="feature-card">
+            <img className="featureicon" src={graph} alt="Graph Icon"/> 
+            <h4>Charts and Graphs</h4>
+            <p>Visual representations of spending data through charts and graphs help users quickly identify trends and patterns in their spending habits.
+            </p>
+        </div>
+        <div className="feature-card">
+            <img className="featureicon" src={trend} alt="Trends Icon"/> 
+            <h4>Insightful Trend Analysis</h4>
+            <p>The app highlights important trends based on the scanned receipt data, enabling users to make informed decisions about their finances.
+            </p>
+        </div>
+        <div className="feature-card">
+            <img className="featureicon" src={UI} alt="Interface Icon"/> 
+            <h4>User Friendly Interface</h4>
+            <p>An intuitive and easy-to-navigate interface ensures that users can quickly access features and information, making financial management simple and efficient.
             </p>
         </div>
     </div>
-    <h4>Take control of your financial future with EasiPeasi Expense Snap! Start tracking your spending today to make smarter financial decisions tomorrow.
+    <h4 class="caption">Take control of your financial future with EasiPeasi Expense Snap! 
+      <br/>
+      Start tracking your spending today to make smarter financial decisions tomorrow.
     </h4>
-    <div class="botbtn">
-      <button class="botbtn">Sign Up</button>
+    <div className="botbtn">
+      <button className="botbtn button-home">Sign Up</button>
     </div>
-    <br>
+    <br/>
   </body>
+
   <footer>
+    <img className="banner" src={logo} alt="4 cats"/>
     <p> Designed, Created, and Implemented by Emily, Annie, Seungha, and Ivy.
     </p>
-    <!-- <img style="border:0;width:100%" src="banner.png" alt="website banner" title="sustainibility"> -->
   </footer>
 </html>
