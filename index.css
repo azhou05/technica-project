@@ -82,7 +82,7 @@ header:after {
 /* Feature Cards */
 .feature-card {
     border-radius: 2%;
-    background-color: #e5efe9;
+    background-color: #e8dad1;
     padding: 40px 28px;
     flex-grow: 1; /* Allows cards to stretch equally */
     flex-basis: 0; /* Distributes cards evenly regardless of content size */
@@ -111,7 +111,7 @@ button {
   float: right;
   align-items: center;
   appearance: none;
-  background-color: #e5efe9;
+  background-color: #e8dad1;
   border-radius: 15px;
   border-style: none;
   box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
@@ -142,7 +142,7 @@ button {
 }
 
 button:hover {
-  background: #fbfffd;
+  background: #ebe4df;
   color: #174ea6;
 }
 
@@ -177,7 +177,7 @@ button:disabled {
 }
 
 body {
-    background-color: #D8E2DC;
+    background-color: #f8f3e8;
     text-align: center;
     min-height: 100vh; /* Ensures body takes full height */
     margin: 0; /* Reset default margin */
