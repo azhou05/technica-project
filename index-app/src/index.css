@@ -126,8 +126,8 @@ body {
         grid-template-columns: 1fr;
     }
 }
-/* button styling */
-button {
+/* .button-home styling */
+.button-home {
   float: right;
   align-items: center;
   appearance: none;
@@ -159,31 +159,31 @@ button {
   width: auto;
   will-change: transform,opacity;
 }
-button:hover {
+.button-home:hover {
   background: #f3c5a8;
   color: #174ea6;
 }
-button:active {
+.button-home:active {
   box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
   outline: none;
 }
-button:focus {
+.button-home:focus {
   outline: none;
   border: 2px solid #4285f4;
 }
-button:not(:disabled) {
+.button-home:not(:disabled) {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
-button:not(:disabled):hover {
+.button-home:not(:disabled):hover {
   box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
 }
-button:not(:disabled):focus {
+.button-home:not(:disabled):focus {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
-button:not(:disabled):active {
+.button-home:not(:disabled):active {
   box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
 }
-button:disabled {
+.button-home:disabled {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 .botbtn {

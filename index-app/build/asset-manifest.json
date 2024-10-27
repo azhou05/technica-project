@@ -1,14 +1,18 @@
 {
   "files": {
-    "main.css": "/technica-project/static/css/main.ce76ff79.css",
-    "main.js": "/technica-project/static/js/main.d8dcbc09.js",
+    "main.css": "/technica-project/static/css/main.558f6ada.css",
+    "main.js": "/technica-project/static/js/main.146b75ae.js",
     "static/media/cats.png": "/technica-project/static/media/cats.b8b1df6a455eaf0d1889.png",
+    "static/media/research.png": "/technica-project/static/media/research.63eb8f05e7ef0ace0b5f.png",
+    "static/media/budget.png": "/technica-project/static/media/budget.8dba79c3945b3f03a7c6.png",
+    "static/media/stock-market.png": "/technica-project/static/media/stock-market.2a8db51c98178e35f3e8.png",
+    "static/media/tag.png": "/technica-project/static/media/tag.893e36f1ef8708fefd0f.png",
     "index.html": "/technica-project/index.html",
-    "main.ce76ff79.css.map": "/technica-project/static/css/main.ce76ff79.css.map",
-    "main.d8dcbc09.js.map": "/technica-project/static/js/main.d8dcbc09.js.map"
+    "main.558f6ada.css.map": "/technica-project/static/css/main.558f6ada.css.map",
+    "main.146b75ae.js.map": "/technica-project/static/js/main.146b75ae.js.map"
   },
   "entrypoints": [
-    "static/css/main.ce76ff79.css",
-    "static/js/main.d8dcbc09.js"
+    "static/css/main.558f6ada.css",
+    "static/js/main.146b75ae.js"
   ]
 }
