@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './user.css'; // Assuming you have a CSS file for styles
-import receiptLogo from 'assets/receipt.png'; // Ensure correct import path for assets
+import receiptLogo from './cats.png'; // Ensure correct import path for assets
 
 const UserPage = () => {
     const [expenses, setExpenses] = useState([]);
