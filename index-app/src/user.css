@@ -64,6 +64,7 @@ body {
 }
 
 .topbtn {
+    font-family: "Fredoka", sans-serif;
     float: right;
     align-items: center;
     appearance: none;
@@ -109,6 +110,7 @@ body {
 }
 
 .sidebar {
+    font-family: "Fredoka", sans-serif;
     height: 100%;
     width: 0;
     position: fixed;
@@ -139,40 +141,6 @@ body {
     color: #f1f1f1;
 }
 
-.openbtn {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    color: #000000;
-    padding: 10px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-family: inherit;
-    transition: color 0.3s;
-}
-
-.closebtn {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    color: #000000;
-    padding: 10px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-family: inherit;
-    transition: color 0.3s;
-    display: none;
-    z-index: 2;
-}
-
-.closebtn:hover {
-    color: #f3c5a8;
-}
-
 #main {
     transition: margin-left .5s;
     margin-left: 0;
@@ -191,6 +159,7 @@ body {
 }
 
 .sidebar button {
+    font-family: "Fredoka", sans-serif;
     width: 78%;
     padding: 8px 10px; 
     margin: 8px 0;
@@ -229,6 +198,7 @@ section {
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    font-family: "Fredoka", sans-serif;
 }
 
 h1, h2 {
@@ -281,9 +251,43 @@ footer {
 }  
 
 .open {
-    width: 220px; /* Adjust width when open */
+    width: 220px;
 }
 
 .close {
-    width: 0; /* Collapse to 0 */
+    width: 0;
+}
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #000000;
+    padding: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-family: inherit;
+    transition: color 0.3s;
+}
+
+.closebtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #000000;
+    padding: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-family: inherit;
+    transition: color 0.3s;
+    display: none;
+    z-index: 2;
+}
+
+.openbtn:hover, .closebtn:hover {
+    color: #f3c5a8;
 }
