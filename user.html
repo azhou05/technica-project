@@ -108,9 +108,20 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+
+        document.addFile('DOMContentLoaded', function() {
             showDashboard();
+
+            document.getElementById('custom-file-upload').addFile('click', function() {
+                document.getElementById('receipt-upload').click();
+            });
+
+            document.getElementById('receipt-upload').addFile('change', function() {
+                const fileName = this.files[0] ? this.files[0].name : 'No file chosen';
+                document.getElementById('file-chosen').textContent = fileName;
+            });
         });
+
 
         function openNav() {
             document.getElementById("mySidebar").style.width = "250px";
@@ -157,7 +168,7 @@
         }
 
         // handle adding receipt
-        document.getElementById('expense-form').addEventListener('submit', function(e) {
+        document.getElementById('expense-form').addFile('submit', function(e) {
             e.preventDefault();
 
             const date = document.getElementById('expense-date').value;
@@ -178,7 +189,7 @@
         });
 
         // handle uploading receipt
-        document.getElementById('receipt-form').addEventListener('submit', function(e) {
+        document.getElementById('receipt-form').addFile('submit', function(e) {
             e.preventDefault();
 
             const fileInput = document.getElementById('receipt-upload');
@@ -230,11 +241,10 @@
             `;
             tableBody.appendChild(row);
 
-            row.querySelector('.delete-expense-btn').addEventListener('click', function() {
+            row.querySelector('.delete-expense-btn').addFile('click', function() {
                 deleteExpense(index);
             });
         }
-
 
         function deleteExpense(index) {
             let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
@@ -243,7 +253,7 @@
             loadExpenses(); // Re-load expenses to update the UI
         }
 
-        document.getElementById('receipt-form').addEventListener('submit', function(e) {
+        document.getElementById('receipt-form').addFile('submit', function(e) {
             e.preventDefault();
 
             const fileInput = document.getElementById('receipt-upload');
