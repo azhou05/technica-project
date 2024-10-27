@@ -3,11 +3,11 @@
 /* text styles */
 h1 {
     font-family: "Fredoka", sans-serif;
-    font-weight: 600;
+    font-weight: 550;
 }
 h2 {
     font-family: "Fredoka", sans-serif;
-    font-weight: 600;
+    font-weight: 550;
 }
 h3 {
     font-family: "Fredoka", sans-serif;
@@ -68,18 +68,17 @@ body {
 }
 @media (max-width: 768px) {
     .frontpage {
-        flex-direction: column; /* Stack content vertically */
-        text-align: center; /* Center-align content */
+        flex-direction: column;
+        text-align: center;
     }
-
     .frontpage img {
-        max-height: none; /* Allow image to resize freely */
+        max-height: none;
     }
-
     .frontpage div {
-        margin-bottom: 1rem; /* Add space between text and image */
+        margin-bottom: 1rem;
     }
 }
+
 /* logo and top bar */
 .topbar {
     display: flex;
@@ -98,35 +97,33 @@ body {
 }
 /* feature cards */
 .feature-list {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: space-between;
+    display: grid;
+    gap: 1rem;
     padding: 25px;
-    gap: .5rem;
     padding-bottom: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-items: stretch; 
 }
 .feature-card {
-    border-radius: 2%;
+    border-radius: 8px;
     background-color: #f8ddcd;
     padding: 40px 28px;
-    flex-grow: 1;
-    flex-basis: 0; 
-    min-width: 200px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
-    z-index: 1;
+}
+.feature-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
 }
 .featureicon {
     max-height: 40px;
 }
 @media (max-width: 768px) {
     .feature-list {
-        flex-wrap: wrap; 
-    }
-    
-    .feature-card {
-        flex: 1 1 100%; 
+        grid-template-columns: 1fr;
     }
 }
 /* button styling */
@@ -207,4 +204,8 @@ button:disabled {
 .login:hover {
     background: #f2ebdc;
     color: #174ea6;
+}
+
+.banner {
+    width: 200px;
 }
