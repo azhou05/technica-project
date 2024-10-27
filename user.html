@@ -12,15 +12,15 @@
         }
     </style>
 </head>
-<header>
-    <br>
-    <div class="topbtn">
-      <button type="button column1"><a href="index.html" style="color:#3c4043;">Log Out</a></button>
-    </div>
-    <br>
-</header>
 
 <body>
+    <header>
+        <br>
+        <div class="topbtn">
+          <topbtn type="button column1" class="logout-btn"><a href="index.html" style="color:#3c4043;">Log Out</a></topbtn>
+        </div>
+        <br>
+    </header>
     <!-- sidebar -->
     <div class="sidebar">
         <div class="logoname column1">
@@ -63,13 +63,15 @@
                 <label for="expense-note">Note:</label>
                 <textarea id="expense-note" name="expense-note" placeholder="Add a note..."></textarea>
 
-                <button type="submit">Add Expense</button>
+                <button type="submit">Submit</button>
             </form>
             <h2>Add a New Receipt</h2>
             <form id="receipt-form">
                 <label for="receipt-upload">Upload Receipt:</label>
-                <input type="file" id="receipt-upload" name="receipt-upload" accept="image/*" required>
-                <button type="submit">UploadReceipt</button>
+                <input type="file" id="receipt-upload" name="receipt-upload" accept="image/*" required style="display: none;">
+                <button type="button" id="custom-file-upload" class="submit-btn">Choose File</button>
+                <span id="file-chosen">No file chosen</span>
+                <button type="submit" class="submit-btn">Submit</button>
             </form>
         </section>
 
@@ -83,6 +85,7 @@
                         <th>Amount</th>
                         <th>Category</th>
                         <th>Note</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody id="expense-table-body">
@@ -171,22 +174,37 @@
             const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
             document.getElementById('expense-table-body').innerHTML = ''; // Clear existing entries
 
-            expenses.forEach(expense => {
-                addExpenseToTable(expense);
+            expenses.forEach((expense, index) => {
+                addExpenseToTable(expense, index);
             });
         }
 
-        function addExpenseToTable(expense) {
+        function addExpenseToTable(expense, index) {
             const tableBody = document.getElementById('expense-table-body');
             const row = document.createElement('tr');
+
             row.innerHTML = `
                 <td>${expense.date}</td>
                 <td>$${parseFloat(expense.amount).toFixed(2)}</td>
                 <td>${expense.category}</td>
                 <td>${expense.note}</td>
+                <td><button class="delete-expense-btn" data-index="${index}">Delete</button></td>
             `;
             tableBody.appendChild(row);
+
+            row.querySelector('.delete-expense-btn').addEventListener('click', function() {
+                deleteExpense(index);
+            });
         }
+
+        function deleteExpense(index) {
+            let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+            expenses.splice(index, 1); // Remove the expense from the array
+            localStorage.setItem('expenses', JSON.stringify(expenses)); // Update local storage
+            loadExpenses(); // Re-load expenses to update the UI
+        }
+
+
     </script>
     
 </body>
