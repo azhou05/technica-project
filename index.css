@@ -106,7 +106,7 @@ body {
 }
 .feature-card {
     border-radius: 8px;
-    background-color: #f9ccd5;
+    background-color: #ffe7e7;
     padding: 40px 28px;
     text-align: left;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -131,7 +131,7 @@ body {
   float: right;
   align-items: center;
   appearance: none;
-  background-color: #f8ddcd;
+  background-color: #ffe7e7;
   border-radius: 15px;
   border-style: none;
   box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
