@@ -77,6 +77,8 @@
         <!-- expense history section -->
         <section id="expense-history">
             <h2>Your Expense History</h2>
+            <div id="total-expense-display">Total Expenses: $0.00</div>
+            <br>
             <table>
                 <thead>
                     <tr>
@@ -205,9 +207,15 @@
             const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
             document.getElementById('expense-table-body').innerHTML = ''; // Clear existing entries
 
+            let totalExpense = 0; // Initialize total expense
+
             expenses.forEach((expense, index) => {
                 addExpenseToTable(expense, index);
+                totalExpense += parseFloat(expense.amount); // Accumulate total expense
             });
+
+            // Update the total expenses display
+            document.getElementById('total-expense-display').textContent = `Total Expenses: $${totalExpense.toFixed(2)}`;
         }
 
         function addExpenseToTable(expense, index) {
@@ -226,6 +234,7 @@
                 deleteExpense(index);
             });
         }
+
 
         function deleteExpense(index) {
             let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
