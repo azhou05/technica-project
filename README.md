@@ -4,7 +4,7 @@ Welcome to EasiPeasi Expense Snap! This project is a powerful financial tool tha
 
 ## Project Overview
 
-EasiPeasi Expense Snap allows users to upload images of receipts, which are automatically scanned to extract key details like items, prices, and dates. It tracks expenses over time, categorizes them into meaningful groups, and visualizes trends through graphs and charts. This app provides users with actionable insights to make smarter financial decisions and maintain better control over their spending habits.
+EasiPeasi Expense Snap allows users to upload images of receipts, which are automatically scanned to extract key details like items, prices, and dates. It tracks expenses over time, allows users to categorize them into meaningful groups, and visualizes trends through graphs and charts. This app provides users with actionable insights to make smarter financial decisions and maintain better control over their spending habits.
 
 ## Features
 
@@ -17,7 +17,7 @@ EasiPeasi Expense Snap allows users to upload images of receipts, which are auto
 * Charts and Graphs
   * Get visual insights into your spending habits through interactive charts and graphs.
 * Insightful Trend Analysis
-`* Identify important trends in your expenses and gain valuable insights for smarter financial planning.
+* Identify important trends in your expenses and gain valuable insights for smarter financial planning.
 * User-Friendly Interface
   * Navigate the app easily with a clean and intuitive UI, making financial management simple and efficient
 
