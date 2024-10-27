@@ -33,6 +33,7 @@ cd easipeasi-expense-snap
 Install dependencies: Ensure you have npm or yarn installed, then run:
 ```
 npm install
+npm install react-scripts 
 ```
 Start the development server:
 ```
