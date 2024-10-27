@@ -14,13 +14,17 @@ const UserPage = () => {
     const openNav = () => {
         document.getElementById("mySidebar").style.width = "250px";
         document.getElementById("main").style.marginLeft = "250px";
+        document.querySelector(".main-content").style.marginLeft = "250px";
+        document.querySelector("footer").style.marginLeft = "250px";
         document.querySelector(".openbtn").style.display = "none";
         document.querySelector(".closebtn").style.display = "block";
-    };
+    }
 
     const closeNav = () => {
         document.getElementById("mySidebar").style.width = "0";
         document.getElementById("main").style.marginLeft = "0";
+        document.querySelector(".main-content").style.marginLeft = "0";
+        document.querySelector("footer").style.marginLeft = "0";
         document.querySelector(".openbtn").style.display = "block";
         document.querySelector(".closebtn").style.display = "none"; 
     };
@@ -124,7 +128,7 @@ const UserPage = () => {
                 <option value="other">Other</option>
                 </select>
 
-                <button type="submit">Submit</button>
+                <button type="submit"><p>Submit</p></button>
             </form>
 
             <h2>Add a New Receipt</h2>
@@ -139,9 +143,9 @@ const UserPage = () => {
                 required
                 style={{ display: 'none' }}
                 />
-                <button type="button" id="custom-file-upload">Choose File</button>
+                <button type="button" id="custom-file-upload"><p>Choose File</p></button>
                 <span>{selectedFile ? selectedFile.name : 'No file chosen'}</span>
-                <button type="submit">Submit</button>
+                <button type="submit"><p>Submit</p></button>
             </form>
             </section>
 
@@ -150,7 +154,7 @@ const UserPage = () => {
             <table>
                 <thead>
                 <tr>
-                    <th>Date</th>
+                    <th><p>Date</p></th>
                     <th>Amount</th>
                     <th>Category</th>
                     <th>Actions</th>
