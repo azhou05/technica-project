@@ -1,5 +1,4 @@
 import React from 'react';
-import './index.css';
 import logo from './assets/cats.png';
 import track from './assets/research.png';
 import UI from './assets/interface.png';
@@ -7,6 +6,7 @@ import trend from './assets/stock-market.png'
 import graph from './assets/budget.png'
 import tag from './assets/tag.png'
 import scanner from './assets/scanner.png'
+import './index.css';
 
 const Home = () => {
   return (
@@ -19,8 +19,8 @@ const Home = () => {
             <h3>Expense Snap</h3>
           </div>
           <div className="topbtn">
-            <button type="button" className="login">Log In</button>
-            <button type="button">Sign Up</button>
+            <button type="button" className="login button-home">Log In</button>
+            <button type="button" className="button-home">Sign Up</button>
           </div>
         </div>
         <br/>
@@ -84,7 +84,7 @@ const Home = () => {
         Start tracking your spending today to make smarter financial decisions tomorrow.
       </h4>
       <div className="botbtn">
-        <button className="botbtn">Sign Up</button>
+        <button className="botbtn button-home">Sign Up</button>
       </div>
       <br/>
     </body>
