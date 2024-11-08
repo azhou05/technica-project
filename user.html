@@ -11,6 +11,7 @@
             display: none;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>"
 </head>
 
 <body>
@@ -39,6 +40,24 @@
     <div id="main">
         <h2>Analytics Overview</h2>
         <p>Here is a summary of your spending through the past week, month, and year.</p>
+        
+        <div id="weekly-summary">
+          <h3>Weekly Summary</h3>
+          <p>Total spent this week: <span id="weekly-total">$0.00</span></p>
+          <canvas id="weekly-chart"></canvas>
+        </div>
+        
+        <div id="monthly-summary">
+          <h3>Monthly Summary</h3>
+          <p>Total spent this month: <span id="monthly-total">$0.00</span></p>
+          <canvas id="monthly-chart"></canvas>
+        </div>
+        
+        <div id="yearly-summary">
+          <h3>Yearly Summary</h3>
+          <p>Total spent this year: <span id="yearly-total">$0.00</span></p>
+          <canvas id="yearly-chart"></canvas>
+        </div>
     </div>
 
     <!-- main content area -->
@@ -146,10 +165,13 @@
             document.getElementById('add-expense').style.display = 'none';
             document.getElementById('expense-history').style.display = 'none';
             document.getElementById('receipt-history').style.display = 'none';
-
             document.getElementById(sectionId).style.display = 'block';
 
-            if (sectionId === 'expense-history') {
+            closeNav();
+
+            if (sectionId === 'main') {
+                calculateAnalytics();
+            } else if (sectionId === 'expense-history') {
                 loadExpenses();
             } else if (sectionId === 'receipt-history') {
                 loadReceipts();
@@ -165,6 +187,179 @@
 
         function logout() {
             alert("Logging out...");
+        }
+
+        function calculateAnalytics() {
+            const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+            const now = new Date();
+            const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+            const oneMonthAgo = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
+            const startOfYear = new Date(now.getFullYear(), 0, 1);
+
+            const weeklyTotal = calculateTotalExpenses(expenses, oneWeekAgo);
+            const monthlyTotal = calculateTotalExpenses(expenses, oneMonthAgo);
+            const yearlyTotal = calculateTotalExpenses(expenses, startOfYear);
+
+            document.getElementById('weekly-total').textContent = `$${weeklyTotal.toFixed(2)}`;
+            document.getElementById('monthly-total').textContent = `$${monthlyTotal.toFixed(2)}`;
+            document.getElementById('yearly-total').textContent = `$${yearlyTotal.toFixed(2)}`;
+
+            createWeeklyChart(expenses, oneWeekAgo);
+            createMonthlyChart(expenses, oneMonthAgo);
+            createYearlyChart(expenses, startOfYear);
+            }
+
+        function calculateTotalExpenses(expenses, startDate) {
+        return expenses
+            .filter(expense => new Date(expense.date) >= startDate)
+            .reduce((total, expense) => total + parseFloat(expense.amount), 0);
+        }
+
+        function createWeeklyChart(expenses, startDate) {
+            const ctx = document.getElementById('weekly-chart').getContext('2d');
+            const dailyTotals = Array(7).fill(0);
+            const labels = Array(7).fill().map((_, i) => {
+                const d = new Date(startDate);
+                d.setDate(d.getDate() + i);
+                return d.toLocaleDateString('en-US', { weekday: 'short' });
+            });
+
+            expenses.forEach(expense => {
+                const expenseDate = new Date(expense.date);
+                if (expenseDate >= startDate) {
+                const dayIndex = Math.floor((expenseDate - startDate) / (24 * 60 * 60 * 1000));
+                if (dayIndex >= 0 && dayIndex < 7) {
+                    dailyTotals[dayIndex] += parseFloat(expense.amount);
+                }
+                }
+            });
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Daily Expenses',
+                    data: dailyTotals,
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+                },
+                options: {
+                scales: {
+                    y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Amount ($)'
+                    }
+                    }
+                }
+                }
+            });
+        }
+
+        function createMonthlyChart(expenses, startDate) {
+            const ctx = document.getElementById('monthly-chart').getContext('2d');
+            const monthlyTotals = Array(31).fill(0);
+            const labels = Array(31).fill().map((_, i) => i + 1);
+
+            expenses.forEach(expense => {
+                const expenseDate = new Date(expense.date);
+                if (expenseDate >= startDate) {
+                const dayIndex = expenseDate.getDate() - 1;
+                monthlyTotals[dayIndex] += parseFloat(expense.amount);
+                }
+            });
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Daily Expenses This Month',
+                    data: monthlyTotals,
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+                },
+                options: {
+                scales: {
+                    y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Amount ($)'
+                    }
+                    },
+                    x: {
+                    title: {
+                        display: true,
+                        text: 'Day of Month'
+                    }
+                    }
+                },
+                plugins: {
+                    title: {
+                    display: true,
+                    text: 'Monthly Expense Summary'
+                    }
+                }
+                }
+            });
+        }
+
+        function createYearlyChart(expenses, startDate) {
+            const ctx = document.getElementById('yearly-chart').getContext('2d');
+            const monthlyTotals = Array(12).fill(0);
+            const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+            expenses.forEach(expense => {
+                const expenseDate = new Date(expense.date);
+                if (expenseDate >= startDate) {
+                const monthIndex = expenseDate.getMonth();
+                monthlyTotals[monthIndex] += parseFloat(expense.amount);
+                }
+            });
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Monthly Expenses This Year',
+                    data: monthlyTotals,
+                    backgroundColor: 'rgba(255, 159, 64, 0.6)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1
+                }]
+                },
+                options: {
+                scales: {
+                    y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Amount ($)'
+                    }
+                    },
+                    x: {
+                    title: {
+                        display: true,
+                        text: 'Month'
+                    }
+                    }
+                },
+                plugins: {
+                    title: {
+                    display: true,
+                    text: 'Yearly Expense Summary'
+                    }
+                }
+                }
+            });
         }
 
         // handle adding receipt
