@@ -294,7 +294,7 @@
             expenses.forEach(expense => {
                 const expenseDate = new Date(expense.date);
                 if (expenseDate >= startDate) {
-                    const dayIndex = expenseDate.getDate() - 1; // Get day of month (0-30)
+                    const dayIndex = expenseDate.getDate(); // Get day of month (0-30)
                     data[dayIndex] += parseFloat(expense.amount);
                 }
             });
