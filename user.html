@@ -198,7 +198,7 @@
             
             createWeeklyChart(expenses, oneWeekAgo);
             createMonthlyChart(expenses, oneMonthAgo);
-            }
+        }
 
         function calculateTotalExpenses(expenses, startDate) {
             const endDate = new Date();
@@ -212,104 +212,95 @@
 
         function createWeeklyChart(expenses, startDate) {
             const ctx = document.getElementById('weekly-chart').getContext('2d');
-            const dailyTotals = Array(7).fill(0);
-            const today = new Date();
+            const data = getWeeklyData(expenses, startDate);
             
-            // Generate labels for the past 7 days
-            const labels = Array(7).fill().map((_, i) => {
-                const d = new Date(today);
-                d.setDate(d.getDate() - (6 - i));  // Count backwards from today
-                return d.toLocaleDateString('en-US', { weekday: 'short' });
-            });
-
-            expenses.forEach(expense => {
-                const expenseDate = new Date(expense.date);
-                const timeDiff = Math.floor((expenseDate - startDate) / (24 * 60 * 60 * 1000));
-                if (timeDiff >= 0 && timeDiff < 7) {
-                    dailyTotals[timeDiff] = (dailyTotals[timeDiff] || 0) + parseFloat(expense.amount);
-                }
-            });
-
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Daily Expenses',
-                    data: dailyTotals,
-                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Weekly Spending',
+                        data: data,
+                        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
                 },
                 options: {
-                scales: {
-                    y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Amount ($)'
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Amount ($)'
+                            }
+                        }
                     }
-                    }
-                }
                 }
             });
         }
 
         function createMonthlyChart(expenses, startDate) {
             const ctx = document.getElementById('monthly-chart').getContext('2d');
-            const now = new Date();
-            const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-            const monthlyTotals = Array(daysInMonth).fill(0);
-            const labels = Array(daysInMonth).fill().map((_, i) => i + 1);
-
-            expenses.forEach(expense => {
-                const expenseDate = new Date(expense.date);
-                if (expenseDate >= startDate && 
-                    expenseDate.getMonth() === now.getMonth() && 
-                    expenseDate.getFullYear() === now.getFullYear()) {
-                    const dayIndex = expenseDate.getDate() - 1;
-                    monthlyTotals[dayIndex] += parseFloat(expense.amount);
-                }
-            });
-
+            const data = getMonthlyData(expenses, startDate);
+            const labels = Array.from({length: 31}, (_, i) => i + 1); // Create labels for 31 days
+            
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Daily Expenses This Month',
-                    data: monthlyTotals,
-                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }]
+                    labels: labels,
+                    datasets: [{
+                        label: 'Monthly Spending',
+                        data: data,
+                        backgroundColor: 'rgba(153, 102, 255, 0.6)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 1
+                    }]
                 },
                 options: {
-                scales: {
-                    y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Amount ($)'
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Day of Month'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Amount ($)'
+                            }
+                        }
                     }
-                    },
-                    x: {
-                    title: {
-                        display: true,
-                        text: 'Day of Month'
-                    }
-                    }
-                },
-                plugins: {
-                    title: {
-                    display: true,
-                    text: 'Monthly Expense Summary'
-                    }
-                }
                 }
             });
         }
+
+        function getWeeklyData(expenses, startDate) {
+            const data = [0, 0, 0, 0, 0, 0, 0];
+            expenses.forEach(expense => {
+                const expenseDate = new Date(expense.date);
+                if (expenseDate >= startDate) {
+                    const dayIndex = expenseDate.getDay();
+                    data[dayIndex] += parseFloat(expense.amount);
+                }
+            });
+            return data;
+        }
+
+        function getMonthlyData(expenses, startDate) {
+            const data = Array(31).fill(0); // Initialize array for 31 days
+            expenses.forEach(expense => {
+                const expenseDate = new Date(expense.date);
+                if (expenseDate >= startDate) {
+                    const dayIndex = expenseDate.getDate() - 1; // Get day of month (0-30)
+                    data[dayIndex] += parseFloat(expense.amount);
+                }
+            });
+            return data;
+        }
+
 
 
         // handle adding receipt
